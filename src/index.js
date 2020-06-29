@@ -9,23 +9,25 @@ function closestToZero(integers) {
     return 0;
   }
 
-  return integers.reduce((closest, value) => {
-    if (!closest) {
-      return value;
-    }
-    const absValue = Math.abs(value);
-    const absClosest = Math.abs(closest);
+  const { value: closestValue } = integers.reduce((closest, value) => {
+    const abs = Math.abs(value);
 
-    if (absValue < absClosest) {
-      return value;
+    if (!closest.value) {
+      return { value, abs };
     }
 
-    if (absValue === absClosest && value > 0) {
-      return value;
+    if (abs < closest.abs) {
+      return { value, abs };
+    }
+
+    if (abs === closest.abs && value > 0) {
+      return { value, abs };
     }
 
     return closest;
-  }, undefined);
+  }, {});
+
+  return closestValue;
 }
 
 module.exports = closestToZero;
