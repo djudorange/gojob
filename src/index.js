@@ -5,7 +5,7 @@
  * @returns integer
  */
 function closestToZero(integers) {
-  if (!integers || Array.isArray(integers) || integers.length === 0) {
+  if (!integers || !Array.isArray(integers) || integers.length === 0) {
     return 0;
   }
 
