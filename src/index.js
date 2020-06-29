@@ -12,15 +12,11 @@ function closestToZero(integers) {
   const { value: closestValue } = integers.reduce((closest, value) => {
     const abs = Math.abs(value);
 
-    if (!closest.value) {
-      return { value, abs };
-    }
-
-    if (abs < closest.abs) {
-      return { value, abs };
-    }
-
-    if (abs === closest.abs && value > 0) {
+    if (
+      !closest.value ||
+      abs < closest.abs ||
+      (abs === closest.abs && value > 0)
+    ) {
       return { value, abs };
     }
 
